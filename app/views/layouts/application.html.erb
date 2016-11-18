@@ -4,42 +4,37 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "TaskIt" %></title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css">
     <%= stylesheet_link_tag    "application" %>
-    <%= yield :head %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
   </head>
 
   <body>
 
-    <div class="top-bar" id="main-nav">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">TaskIt</li>
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="menu">
-          <% if user_signed_in? %>
-          <li><%= link_to 'Logout', destroy_user_session_path, method: 'delete' %></li>
-          <% else %>
-          <li><%= link_to 'Register', new_user_registration_path %></li>
-          <li><%= link_to 'Login', new_user_session_path %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div id="main-nav" class="row align-justify">
+      <ul class="vertical medium-horizontal menu">
+        <li class="menu-text">TaskIt</li>
+        <li><%= link_to 'Projects', projects_path %></li>
+      </ul>
+      <% unless @project.nil? %>
+        <h1 class="project-name"><%= @project.name %></h1>
+      <% end %>
+      <ul class="menu">
+        <% if user_signed_in? %>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: 'delete' %></li>
+        <% else %>
+        <li><%= link_to 'Register', new_user_registration_path %></li>
+        <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
+      </ul>
     </div>
 
-    <div class="row">
-      <div class="small-12 columns">
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
+
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= yield :js %>
 
   </body>
 </html>

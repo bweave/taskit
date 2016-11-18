@@ -1,0 +1,6 @@
+var $lists = $('#lists'),
+    $form = $("form#new_list"),
+    $html = $("<%= j render @list %>");
+$html.insertBefore('#new-list');
+$form[0].reset();
+$lists.scrollLeft($lists.prop('scrollWidth'));

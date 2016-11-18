@@ -1,0 +1,4 @@
+var $modal = $('#edit-list-modal'),
+    $html = $("<%= j render 'edit_form', list: @list %>");
+
+$modal.html($html).foundation('open');

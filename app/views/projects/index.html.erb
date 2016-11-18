@@ -1,0 +1,16 @@
+<div class="row align-justify align-middle">
+  <h1>Projects</h1>
+  <%= link_to new_project_path, class: 'button small' do %>
+    <i class="fa fa-plus"></i>
+    New
+  <% end %>
+</div>
+
+<div class="projects row">
+  <% @projects.each do |project| %>
+    <div class="project">
+      <h3 class="project-name"><%= link_to project.name, project_path(project.slug) %></h3>
+      <p><%= project.description %></p>
+    </div>
+  <% end %>
+</div>

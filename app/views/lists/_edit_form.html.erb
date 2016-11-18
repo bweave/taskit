@@ -1,0 +1,11 @@
+<h3>Edit List: <%= list.name %></h3>
+
+<%= form_for list, remote: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autocomplete: 'off' %>
+    <%= f.submit %>
+<% end %>
+
+<button class="close-button" data-close aria-label="Close Accessible Modal" type="button">
+  <span aria-hidden="true">&times;</span>
+</button>

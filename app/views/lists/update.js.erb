@@ -1,0 +1,5 @@
+var $editListModal = $('#edit-list-modal'),
+    $listName = $('.list[data-id="<%= @list.id %>"] .list-name');
+
+$listName.text('<%= @list.name %>');
+$editListModal.foundation('close');

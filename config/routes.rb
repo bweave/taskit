@@ -8,6 +8,15 @@ Rails.application.routes.draw do
     password: 'secret'
   }
 
+  resources :projects do
+    resources :lists, shallow: true do
+      put :sort, on: :collection
+      resources :cards, shallow: true do
+        put :sort, on: :collection
+      end
+    end
+  end
+
   root to: 'home#index'
 
   # For details on the DSL available within this file,see http://guides.rubyonrails.org/routing.html

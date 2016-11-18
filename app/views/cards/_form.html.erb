@@ -1,0 +1,4 @@
+<%= form_for Card.new, url: list_cards_path(list.id), remote: true, html: {id: "list_#{list.id}_new_card"} do |f| %>
+  <%= f.hidden_field :list_id, value: list.id %>
+  <%= f.text_field :name, placeholder: 'New Card...', autocomplete: 'off' %>
+<% end %>

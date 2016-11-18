@@ -1,0 +1,42 @@
+<div class="wrap">
+  <div id="lists-container" class="lists-container" data-project_slug="<%= @project.slug %>">
+    <% @project.lists.each do |list| %>
+      <div class="list" data-id="<%= list.id %>">
+
+        <div class="header">
+          <div class="handle fa fa-ellipsis-v"></div>
+          <h3 class="list-name"><%= list.name %></h3>
+          <div class="actions">
+            <%= link_to edit_list_path(list.id), remote: true, data: {open: 'edit-list-modal'}  do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+            <%= link_to list_path(list.id), method: 'DELETE', remote: true, data: {confirm: 'Are you sure?'} do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="cards" data-list_id="<%= list.id %>">
+          <% list.cards.each do |card| %>
+            <%= render 'cards/card', card: card %>
+          <% end %>
+        </div>
+
+        <div class="new-card">
+          <%= render 'cards/form', list: list %>
+        </div>
+
+      </div>
+    <% end %>
+
+    <div id="new-list" class="new-list">
+      <%= render 'lists/form', project: @project %>
+    </div>
+  </div>
+</div>
+
+<div class="reveal" id="edit-list-modal" data-reveal></div>
+
+<% content_for :js do %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
+<% end %>
