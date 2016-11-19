@@ -1,0 +1,17 @@
+<h3>Card: <%= @card.name %></h3>
+
+<%= form_for @card, remote: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autocomplete: 'off' %>
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 5 %>
+    <%= f.submit %>
+<% end %>
+
+<%= link_to card_path(@card.id), method: 'DELETE', remote: true, class: 'button alert' do %>
+  Delete Card
+<% end %>
+
+<button class="close-button" data-close aria-label="Close Accessible Modal" type="button">
+  <span aria-hidden="true">&times;</span>
+</button>

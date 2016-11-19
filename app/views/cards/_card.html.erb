@@ -1,4 +1,8 @@
-<div class="card" data-id="<%= card.id %>">
-  <div class="card-name "><%= card.name %></div>
-  <div class=""><%= card.description %></div>
-</div>
+<%= link_to edit_card_path(card.id), remote: true do %>
+  <div class="card" data-id="<%= card.id %>">
+    <h4 class="card-name "><%= card.name %></h4>
+    <% unless card.description.nil? %>
+      <p class="card-description"><%= card.description %></p>
+    <% end %>
+  </div>
+<% end %>

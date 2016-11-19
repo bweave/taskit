@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_card, only: [:update, :destroy]
+  before_action :set_card, only: [:edit, :update, :destroy]
 
   def show
   end
@@ -18,10 +18,13 @@ class CardsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.json { render :show, status: :ok, location: @card }
+        format.js {}
       else
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end
@@ -38,7 +41,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     respond_to do |format|
-      format.json { head :no_content }
+      format.js {}
     end
   end
 

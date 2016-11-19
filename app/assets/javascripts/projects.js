@@ -45,5 +45,11 @@ $(function() {
       });
     });
 
+  let $actionMenuToggles = $('.actions-menu');
+  $actionMenuToggles.on('click touchstart', function(e) {
+    e.preventDefault();
+    $(this).siblings('.actions').toggleClass('hide');
+  });
+
 });
 
