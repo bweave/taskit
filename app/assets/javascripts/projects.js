@@ -48,7 +48,9 @@ $(function() {
   let $actionMenuToggles = $('.actions-menu');
   $actionMenuToggles.on('click touchstart', function(e) {
     e.preventDefault();
-    $(this).siblings('.actions').toggleClass('hide');
+    let $this = $(this);
+    $this.toggleClass('fa-bars').toggleClass('fa-close');
+    $this.siblings('.actions').toggleClass('hide');
   });
 
 });

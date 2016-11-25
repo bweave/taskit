@@ -1,3 +1,8 @@
+<!-- <button id="toggle-edit"><i class="fa fa-pencil fa-sm"></i></button>
+<h3 contenteditable="false"><%= @card.name %></h3>
+<p contenteditable="false"><%= @card.description %></p> -->
+
+
 <h3>Card: <%= @card.name %></h3>
 
 <%= form_for @card, remote: true do |f| %>
