@@ -34,7 +34,9 @@ class CardsController < ApplicationController
 
   def sort
     params[:order].each do |key,value|
-      Card.find(value[:id]).update(list_id: params['list_id'], position: value[:position])
+      card = Card.find(value[:id])
+      card.update(list_id: params['list_id'], position: value[:position])
+      CardRelayJob.perform_later(card)
     end
     render :nothing => true
   end

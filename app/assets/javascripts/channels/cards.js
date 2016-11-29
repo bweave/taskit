@@ -15,7 +15,7 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
     let $card = $(`.card[data-id="${data.card_id}"]`);
 
     if (this.cardExists($card)) {
-      return this.updateCard($card, data.card_html);
+      return this.updateCard($card, data);
     }
 
     return this.createCard(data.list_id, data.card_html);
@@ -30,7 +30,15 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
     return $cards.append(cardHtml);
   },
 
-  updateCard: function($card, cardHtml) {
-    return $card.replaceWith(cardHtml);
+  updateCard: function($card, data) {
+    let $currentList = $card.parents('.cards'),
+        listId = $currentList.data('list_id');
+
+    if (listId !== data.list_id) {
+      let $newList = $(`.cards[data-list_id="${data.list_id}"]`);
+      $newList.append($card);
+    }
+
+    $card.replaceWith(data.card_html);
   }
 });
