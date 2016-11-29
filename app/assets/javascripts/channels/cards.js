@@ -34,15 +34,13 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
     function _updateList($card, data) {
       let $currentList = $card.parents('.cards'),
           listId = $currentList.data('list_id'),
-          $newList,
+          $listToUpdate,
           $cardSibling;
 
-      if (listId === data.list_id) return;
+      $listToUpdate = (listId === data.list_id) ? $currentList : $(`.cards[data-list_id="${data.list_id}"]`);
+      $cardSibling = $(`.card:nth-child(${data.card_position})`, $listToUpdate);
 
-      $newList = $(`.cards[data-list_id="${data.list_id}"]`);
-      $cardSibling = $(`.card:nth-child(${data.card_position})`, $newList);
-
-      if ($cardSibling.length < 1) return $newList.append($card);
+      if ($cardSibling.length < 1) return $listToUpdate.append($card);
 
       return $cardSibling.before($card);
     };
