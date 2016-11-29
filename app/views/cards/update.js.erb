@@ -1,6 +1,1 @@
-var $editListModal = $('#edit-modal'),
-    $card = $('.card[data-id="<%= @card.id %>"]'),
-    $html = $('<%= j render @card %>');
-
-$card.replaceWith($html);
-$editListModal.foundation('close');
+$('#edit-modal').foundation('close');

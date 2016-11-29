@@ -1,4 +1,4 @@
-class CardCreatedJob < ApplicationJob
+class CardUpdatedJob < ApplicationJob
   queue_as :default
 
   def perform(card)

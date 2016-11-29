@@ -10,7 +10,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.save
-        # format.js {}
+        format.js {}
         CardCreatedJob.perform_later(@card)
       else
         format.json { render json: @card.errors, status: :unprocessable_entity }
@@ -25,6 +25,7 @@ class CardsController < ApplicationController
     respond_to do |format|
       if @card.update(card_params)
         format.js {}
+        CardUpdatedJob.perform_later(@card)
       else
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end
