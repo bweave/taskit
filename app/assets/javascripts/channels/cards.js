@@ -31,14 +31,24 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
   },
 
   updateCard: function($card, data) {
-    let $currentList = $card.parents('.cards'),
-        listId = $currentList.data('list_id');
+    function _updateList($card, data) {
+      let $currentList = $card.parents('.cards'),
+          listId = $currentList.data('list_id'),
+          $newList;
 
-    if (listId !== data.list_id) {
-      let $newList = $(`.cards[data-list_id="${data.list_id}"]`);
-      $newList.append($card);
-    }
+      if (listId === data.list_id) return;
 
-    $card.replaceWith(data.card_html);
+      $newList = $(`.cards[data-list_id="${data.list_id}"]`);
+      return $newList.append($card);
+    };
+
+    function _updateContent($card, html) {
+      return $card.replaceWith(html);
+    };
+
+    _updateList($card, data);
+    _updateContent($card, data.card_html);
+
+    return $card;
   }
 });
