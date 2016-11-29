@@ -45,6 +45,7 @@ class CardsController < ApplicationController
     @card.destroy
     respond_to do |format|
       format.js {}
+      CardDestroyJob.perform_later(@card.id)
     end
   end
 

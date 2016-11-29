@@ -14,11 +14,19 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
     console.log(data);
     let $card = $(`.card[data-id="${data.card_id}"]`);
 
+    if (data.destroy) {
+      return this.destroyCard($card, data);
+    }
+
     if (this.cardExists($card)) {
       return this.updateCard($card, data);
     }
 
     return this.createCard(data.list_id, data.card_html);
+  },
+
+  destroyCard: function($card) {
+    return $card.remove();
   },
 
   cardExists: function($card) {
