@@ -1,6 +1,7 @@
 var $form = $("#list_<%= @card.list_id %>_new_card"),
     $cards = $form.parent().siblings('.cards').first(),
     $html = $("<%= j render @card %>");
+
 $cards.append($html);
 $form[0].reset();
 $form.focus();

@@ -10,8 +10,8 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.save
-        format.json { render json: @card }
-        format.js {}
+        # format.js {}
+        CardCreatedJob.perform_later(@card)
       else
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end
