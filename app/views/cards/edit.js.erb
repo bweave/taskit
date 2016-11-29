@@ -2,16 +2,3 @@ var $modal = $('#edit-modal'),
     $html = $("<%= j render 'edit_form', list: @card %>");
 
 $modal.html($html).foundation('open');
-// $('#toggle-edit').on('click', function($e) {
-//     let $this = $(this),
-//         $fields = $this.siblings().not('.close-button');
-
-//     $this.toggleClass('editing');
-
-//     $fields.each(function(i, field) {
-//         let $field = $(field),
-//             val = $field.attr('contenteditable') === "true" ? true : false;
-
-//         $field.attr('contenteditable', !val);
-//     });
-// });

@@ -15,7 +15,7 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
     let $card = $(`.card[data-id="${data.card_id}"]`);
 
     if (data.destroy) {
-      return this.destroyCard($card, data);
+      return $card.remove();
     }
 
     if (this.cardExists($card)) {
@@ -23,10 +23,6 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
     }
 
     return this.createCard(data.list_id, data.card_html);
-  },
-
-  destroyCard: function($card) {
-    return $card.remove();
   },
 
   cardExists: function($card) {
