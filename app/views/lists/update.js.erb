@@ -2,4 +2,5 @@ let $modal = $('#edit-modal'),
     $actionsMenuToClose = $(".list[data-id='<%= @list.id %>'] .header .actions-menu");
 
 $modal.foundation('close');
-$actionsMenuToClose.click();
+$actionsMenuToClose.toggleClass('fa-bars').toggleClass('fa-close');
+$actionsMenuToClose.siblings('.actions').toggleClass('hide');

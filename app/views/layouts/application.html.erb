@@ -13,11 +13,11 @@
 
   <body>
 
-    <div id="main-nav" class="row align-justify">
-      <ul class="vertical medium-horizontal menu">
+    <div id="main-nav" class="row align-justify no-js">
+      <ul class="menu">
         <li class="menu-text">TaskIt</li>
         <% if user_signed_in? %>
-          <li class="<%= active_class(projects_path) %>">
+          <li class="<%= active_class(controller: 'projects') %>">
             <%= link_to 'Projects', projects_path %>
           </li>
         <% end %>
@@ -27,8 +27,8 @@
       <% end %>
       <ul class="dropdown menu" data-dropdown-menu>
         <% if user_signed_in? %>
-        <li>
-            <a href="#" class="menu-text"><%= current_user.email %></a>
+        <li class="is-dropdown-submenu-parent">
+            <a class="menu-text"><%= current_user.email %></a>
             <ul class="menu">
               <li><%= link_to 'Logout', destroy_user_session_path, method: 'delete' %></li>
             </ul>
@@ -46,7 +46,7 @@
 
     <%= yield %>
 
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application" %>
     <%= yield :js %>
 
   </body>

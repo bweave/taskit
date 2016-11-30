@@ -33,22 +33,24 @@ form input[type=submit] {
 }
 
 .projects {
-  min-width: 20%;
+  min-width: 25%;
 }
 
 .project {
-  position: relative;
+  // position: relative;
+  display: block;
+  flex: 1;
   max-width: 25%;
   margin: 0 1rem 0.5rem 0;
   padding: 1rem 1.5rem 2rem;
   background-color: white;
   border: 1px solid #e1e5e9;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  color: $black;
 
   .project-name {
     font-size: 1.5rem;
     line-height: 1;
-    a { color: $black }
   }
 }
 
@@ -65,7 +67,7 @@ form input[type=submit] {
 .list,
 .new-list {
   flex: 1;
-  min-width: 25%;
+  max-width: 25%;
   padding: 0 1rem 1.5rem;
 }
 

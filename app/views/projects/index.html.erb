@@ -8,9 +8,9 @@
 
 <div class="projects row">
   <% @projects.each do |project| %>
-    <div class="project">
-      <h3 class="project-name"><%= link_to project.name, project_path(project.slug) %></h3>
+    <%= link_to project_path(project.slug), class: 'project' do %>
+      <h3 class="project-name"><%= project.name %></h3>
       <p><%= project.description %></p>
-    </div>
+    <% end %>
   <% end %>
 </div>
