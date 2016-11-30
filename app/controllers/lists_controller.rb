@@ -42,6 +42,7 @@ class ListsController < ApplicationController
     @list.destroy
     respond_to do |format|
       format.js {}
+      ListDestroyJob.perform_later(@list.id)
     end
   end
 

@@ -12,6 +12,10 @@ App.lists = App.cable.subscriptions.create("ListsChannel", {
     console.log(data);
     let $list = $(`.list[data-id="${data.list_id}"]`);
 
+    if (data.destroy) {
+      return $list.remove();
+    }
+
     if (this.listExists($list)) {
       return this.updateList($list, data);
     }

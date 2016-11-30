@@ -6,7 +6,7 @@ class ListRelayJob < ApplicationJob
       list_id: list.id,
       list_position: list.position,
       list_name: list.name,
-      # list_html: ListsController.render(list),
+      list_html: ListsController.render(list),
     }
   end
 end
