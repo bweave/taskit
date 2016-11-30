@@ -47,11 +47,11 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
       if ($cardSibling.length < 1) return $listToUpdate.append($card);
 
       return $cardSibling.before($card);
-    };
+    }
 
     function _updateContent($card, html) {
       return $card.replaceWith(html);
-    };
+    }
 
     _updateList($card, data);
     _updateContent($card, data.card_html);

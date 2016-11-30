@@ -9,6 +9,13 @@ Oh you know, just another Task app.
 - build a Task app that combines some of my favorite features from Trello and Axosoft, SoloApp, e.g. cards can belong to another card, dynamic schedule built from projects/cards due dates.
 - simple deployment via Heroku
 
+### Todo
+
+- WRITE TESTS!
+- multi-tenancy with Apartment gem?
+- teams?
+- invite other users to your project(s)?
+
 <!-- This README would normally document whatever steps are necessary to get the
 application up and running.
 
