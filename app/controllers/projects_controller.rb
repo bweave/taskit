@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects.all
   end
 
   def new
@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
 
   private
     def set_project
-      @project = Project.includes(lists: [:cards]).find(params[:id])
+      @project = current_user.projects.includes(lists: [:cards]).find(params[:id])
     end
 
     def project_params
