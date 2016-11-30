@@ -1,0 +1,11 @@
+{
+  "name": "taskit",
+  "version": "1.0.0",
+  "description": "Another task app",
+  "main": "index.js",
+  "author": "Brian Weaver <bdrums@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dragula": "^3.7.2"
+  }
+}

@@ -6,8 +6,8 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "TaskIt" %></title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css">
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
   </head>
 
   <body>
@@ -38,7 +38,6 @@
     <%= yield %>
 
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
     <%= yield :js %>
 
   </body>
