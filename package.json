@@ -2,7 +2,7 @@
   "name": "taskit",
   "version": "1.0.0",
   "description": "Another task app",
-  "main": "index.js",
+  "main": "",
   "author": "Brian Weaver <bdrums@gmail.com>",
   "license": "MIT",
   "dependencies": {
