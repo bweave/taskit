@@ -31,7 +31,9 @@ class ListsController < ApplicationController
 
   def sort
     params[:order].each do |key,value|
-      List.find(value[:id]).update_attribute(:position, value[:position])
+      list = List.find(value[:id])
+      list.update_attribute(:position, value[:position])
+      ListRelayJob.perform_later(list)
     end
     render :nothing => true
   end
