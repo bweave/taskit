@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application" %>
     <%= csrf_meta_tags %>
+    <%= yield :head %>
   </head>
 
   <body>
@@ -16,7 +17,9 @@
       <ul class="vertical medium-horizontal menu">
         <li class="menu-text">TaskIt</li>
         <% if user_signed_in? %>
-          <li><%= link_to 'Projects', projects_path %></li>
+          <li class="<%= active_class(projects_path) %>">
+            <%= link_to 'Projects', projects_path %>
+          </li>
         <% end %>
       </ul>
       <% unless @project.nil? %>
@@ -31,8 +34,12 @@
             </ul>
           </li>
         <% else %>
-        <li><%= link_to 'Register', new_user_registration_path %></li>
-        <li><%= link_to 'Login', new_user_session_path %></li>
+        <li class="<%= active_class(new_user_registration_path) %>">
+          <%= link_to 'Register', new_user_registration_path %>
+        </li>
+        <li class="<%= active_class(new_user_session_path) %>">
+          <%= link_to 'Login', new_user_session_path %>
+        </li>
         <% end %>
       </ul>
     </div>
