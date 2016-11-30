@@ -15,7 +15,9 @@
     <div id="main-nav" class="row align-justify">
       <ul class="vertical medium-horizontal menu">
         <li class="menu-text">TaskIt</li>
-        <li><%= link_to 'Projects', projects_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Projects', projects_path %></li>
+        <% end %>
       </ul>
       <% unless @project.nil? %>
         <h1 class="project-name"><%= @project.name %></h1>
