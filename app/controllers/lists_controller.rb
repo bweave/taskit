@@ -8,6 +8,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       if @list.save
         format.js {}
+        ListRelayJob.perform_later(@list)
       else
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
@@ -21,6 +22,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       if @list.update(list_params)
         format.js {}
+        ListRelayJob.perform_later(@list)
       else
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end

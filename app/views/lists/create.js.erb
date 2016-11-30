@@ -1,6 +1,6 @@
-var $lists = $('#lists'),
-    $form = $("form#new_list"),
-    $html = $("<%= j render @list %>");
-$html.insertBefore('#new-list');
+let $form = $("form#new_list"),
+    $listsContainer = $('#lists-container');
+
 $form[0].reset();
-$lists.scrollLeft($lists.prop('scrollWidth'));
+$form.focus();
+$listsContainer.data('created_list_<%= @list.id %>', true)
