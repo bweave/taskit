@@ -45,8 +45,8 @@ $(function() {
       });
     });
 
-  let $actionMenuToggles = $('.actions-menu');
-  $actionMenuToggles.on('click touchstart', function(e) {
+
+  $('#lists-container').on('click touchstart', '.list .header .actions-menu', function(e) {
     e.preventDefault();
     let $this = $(this);
     $this.toggleClass('fa-bars').toggleClass('fa-close');
