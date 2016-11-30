@@ -35,7 +35,11 @@ App.lists = App.cable.subscriptions.create("ListsChannel", {
     }
   },
 
-  updateList: function() {
-    debugger;
+  updateList: function($list, data) {
+    let $listName = $(`.list[data-id="${data.list_id}"] .list-name`);
+
+    $listName.text(data.list_name);
+
+    return $list;
   }
 });

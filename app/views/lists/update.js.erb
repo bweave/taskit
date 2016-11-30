@@ -1,5 +1,5 @@
-var $editModal = $('#edit-modal'),
-    $listName = $('.list[data-id="<%= @list.id %>"] .list-name');
+let $modal = $('#edit-modal'),
+    $actionsMenuToClose = $(".list[data-id='<%= @list.id %>'] .header .actions-menu");
 
-$listName.text('<%= @list.name %>');
-$editModal.foundation('close');
+$modal.foundation('close');
+$actionsMenuToClose.click();

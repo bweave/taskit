@@ -5,7 +5,8 @@ class ListRelayJob < ApplicationJob
     ActionCable.server.broadcast "lists_channel", {
       list_id: list.id,
       list_position: list.position,
-      list_html: ListsController.render(list),
+      list_name: list.name,
+      # list_html: ListsController.render(list),
     }
   end
 end
