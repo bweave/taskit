@@ -43,7 +43,7 @@ App.lists = App.cable.subscriptions.create("ListsChannel", {
     let $listName = $(`.list[data-id="${data.list_id}"] .list-name`);
     $listName.text(data.list_name);
 
-    $listSibling = $(`.list:nth-child(${data.list_position})`, '#lists-container');
+    let $listSibling = $(`.list:nth-child(${data.list_position})`, '#lists-container');
     if ($listSibling.length > 0) $listSibling.before($list);
 
     return $list;
