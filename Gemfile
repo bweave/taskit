@@ -30,6 +30,8 @@ gem 'redis', '~> 3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'figaro'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do

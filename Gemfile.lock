@@ -72,6 +72,8 @@ GEM
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
     ffi (1.9.14)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-rails (4.7.0.0)
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)
@@ -249,6 +251,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   factory_girl_rails
+  figaro
   font-awesome-rails
   foundation-rails
   friendly_id (~> 5.1.0)
