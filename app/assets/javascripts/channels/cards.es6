@@ -11,17 +11,20 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
 
   // Called when there's incoming data on the websocket for this channel
   received: function(data) {
-    console.log(data);
+    console.debug('Recieved data: ', data);
     let $card = $(`.card[data-id="${data.card_id}"]`);
 
     if (data.destroy) {
+      console.debug('Destroying card');
       return $card.remove();
     }
 
     if (this.cardExists($card)) {
+      console.debug('The card exists, going to update it');
       return this.updateCard($card, data);
     }
 
+    console.debug('Creating the card');
     return this.createCard(data.list_id, data.card_html);
   },
 
@@ -35,7 +38,9 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
   },
 
   updateCard: function($card, data) {
+    console.debug('Updating the card');
     function _updateList($card, data) {
+      console.debug('Updating the card list');
       let $currentList = $card.parents('.cards'),
           listId = $currentList.data('list_id'),
           $listToUpdate,
@@ -50,6 +55,7 @@ App.cards = App.cable.subscriptions.create('CardsChannel', {
     }
 
     function _updateContent($card, html) {
+      console.debug('Updating the card content');
       return $card.replaceWith(html);
     }
 

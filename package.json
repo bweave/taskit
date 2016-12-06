@@ -5,6 +5,7 @@
   "main": "",
   "author": "Brian Weaver <bdrums@gmail.com>",
   "license": "MIT",
+  "repository": "https://github.com/bweave/taskit",
   "dependencies": {
     "dragula": "^3.7.2"
   }

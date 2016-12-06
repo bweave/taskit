@@ -7,11 +7,14 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
+    logger.debug "\n===== New card: #{@card.attributes.inspect} =====\n"
 
     respond_to do |format|
       if @card.save
         format.js {}
+        logger.debug "\n===== The card was saved: #{@card.attributes.inspect} =====\n"
         CardRelayJob.perform_later(@card)
+        logger.debug "\n===== The CardRelayJob was was created =====\n"
       else
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end

@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
@@ -7,6 +9,10 @@ Rails.application.routes.draw do
     sign_up: 'register',
     password: 'secret'
   }
+
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   resources :projects do
     resources :lists, shallow: true do
